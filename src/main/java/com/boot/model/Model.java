@@ -24,10 +24,10 @@ public class Model {
 	private Date yearFirstMade;
 	
 	@ManyToOne
-	private com.guitar.db.model.Manufacturer manufacturer;
+	private com.boot.model.Manufacturer manufacturer;
 
 	@ManyToOne
-	private com.guitar.db.model.ModelType modelType;
+	private com.boot.model.ModelType modelType;
 
 	public String getName() {
 		return name;
@@ -69,19 +69,19 @@ public class Model {
 		this.yearFirstMade = yearFirstMade;
 	}
 
-	public com.guitar.db.model.Manufacturer getManufacturer() {
+	public com.boot.model.Manufacturer getManufacturer() {
 		return manufacturer;
 	}
 
-	public void setManufacturer(com.guitar.db.model.Manufacturer manufacturer) {
+	public void setManufacturer(com.boot.model.Manufacturer manufacturer) {
 		this.manufacturer = manufacturer;
 	}
 
-	public com.guitar.db.model.ModelType getModelType() {
+	public com.boot.model.ModelType getModelType() {
 		return modelType;
 	}
 
-	public void setModelType(com.guitar.db.model.ModelType modelType) {
+	public void setModelType(com.boot.model.ModelType modelType) {
 		this.modelType = modelType;
 	}
 
