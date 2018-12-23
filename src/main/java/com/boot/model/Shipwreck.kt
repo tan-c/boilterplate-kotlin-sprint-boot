@@ -18,7 +18,7 @@ class Shipwreck {
     var longitude: Double? = null
     var yearDiscovered: Int? = null
 
-    constructor() {}
+//    constructor() {}
 
     constructor(
         id: Long?,
