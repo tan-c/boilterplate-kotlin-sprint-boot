@@ -28,7 +28,7 @@ spring:
       ddl-auto: none
 
 flyway:
-    baseline-on-migrate: true
+  baseline-on-migrate: true
 
 
 datasource:
