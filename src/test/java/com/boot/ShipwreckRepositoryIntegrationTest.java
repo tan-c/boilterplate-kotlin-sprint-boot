@@ -14,17 +14,17 @@ import com.boot.repository.ShipwreckRepository;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = App.class)
-
-public class ShipwreckRepositoryIntegrationTest {
-
-	@Autowired
-	private ShipwreckRepository shipwreckRepository;
-
-	@Test
-	public void testFindAll() {
-		List<Shipwreck> wrecks = shipwreckRepository.findAll();
-		assertThat(wrecks.size(), is(greaterThanOrEqualTo(0)));
-	}
-}
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest(classes = App.class)
+//
+//public class ShipwreckRepositoryIntegrationTest {
+//
+//	@Autowired
+//	private ShipwreckRepository shipwreckRepository;
+//
+//	@Test
+//	public void testFindAll() {
+//		List<Shipwreck> wrecks = shipwreckRepository.findAll();
+//		assertThat(wrecks.size(), is(greaterThanOrEqualTo(0)));
+//	}
+//}

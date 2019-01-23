@@ -5,8 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pluralsight-sprintboot-course-groupip</groupId>
-    <artifactId>pluralsight-sprintboot-course-artifactid</artifactId>
+    <groupId>com.boilterplate</groupId>
+    <artifactId>boilterplate</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <repositories>
@@ -62,6 +62,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.3.3.RELEASE</version>
         </dependency>
 
         <dependency>

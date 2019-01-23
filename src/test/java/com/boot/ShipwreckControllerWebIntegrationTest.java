@@ -16,25 +16,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-//@SpringApplicationConfiguration(App.class)
-@SpringBootTest(classes = App.class)
-//@WebIntegrationTest
-public class ShipwreckControllerWebIntegrationTest {
-	@Test
-	public void testListAll() throws IOException {
-//		RestTemplate restTemplate = new TestRestTemplate();
-		TestRestTemplate testRestTemplate = new TestRestTemplate();
-		ResponseEntity<String> response = testRestTemplate.getForEntity("http://localhost:8088/api/v1/shipwrecks", String.class);
-
-	    assertThat( response.getStatusCode() , equalTo(HttpStatus.OK));
-
-	    ObjectMapper objectMapper = new ObjectMapper();
-	    JsonNode responseJson = objectMapper.readTree(response.getBody());
-
-	    assertThat( responseJson.isMissingNode() , is(false) );
-	    assertThat( responseJson.toString() , equalTo("[]") );
-		
-	}
-
-}
+//@RunWith(SpringJUnit4ClassRunner.class)
+////@SpringApplicationConfiguration(App.class)
+//@SpringBootTest(classes = App.class)
+////@WebIntegrationTest
+//public class ShipwreckControllerWebIntegrationTest {
+//	@Test
+//	public void testListAll() throws IOException {
+////		RestTemplate restTemplate = new TestRestTemplate();
+//		TestRestTemplate testRestTemplate = new TestRestTemplate();
+//		ResponseEntity<String> response = testRestTemplate.getForEntity("http://localhost:8088/api/v1/shipwrecks", String.class);
+//
+//	    assertThat( response.getStatusCode() , equalTo(HttpStatus.OK));
+//
+//	    ObjectMapper objectMapper = new ObjectMapper();
+//	    JsonNode responseJson = objectMapper.readTree(response.getBody());
+//
+//	    assertThat( responseJson.isMissingNode() , is(false) );
+//	    assertThat( responseJson.toString() , equalTo("[]") );
+//
+//	}
+//
+//}
