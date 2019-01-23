@@ -14,12 +14,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-//@ContextConfiguration(locations={"classpath:com/guitar/db/applicationTests-context.xml"})
-@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = App.class)
+
 public class LocationPersistenceTests {
 	@Autowired
 	private LocationRepository locationRepository;
@@ -62,9 +63,9 @@ public class LocationPersistenceTests {
 		Location arizona = locationRepository.find(3L);
 		assertEquals("United States", arizona.getCountry());
 		assertEquals("Arizona", arizona.getState());
-		
+
 		assertEquals(1, arizona.getManufacturers().size());
-		
+
 		assertEquals("Fender Musical Instruments Corporation", arizona.getManufacturers().get(0).getName());
 	}
 }
