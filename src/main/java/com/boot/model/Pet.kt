@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository
 import javax.persistence.Entity
 
 @Entity
-data class Shipwreck (
+data class Pet (
     var name: String = "",
     var description: String = "",
     var condition: String = "",
@@ -16,10 +16,10 @@ data class Shipwreck (
     var yearDiscovered: Int? = null
 ): BaseModel()
 
-@Repository("shipwreckRepository")
-interface ShipwreckRepository : BaseRepository<Shipwreck>
+//@Repository("shipwreckRepository")
+interface ShipwreckRepository : BaseRepository<Pet>
 
-data class ShipwreckResponseModel(
+data class PetResponseModel(
     val name: String,
     val description: String
 ) : BaseDataResponseModel()

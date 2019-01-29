@@ -2,29 +2,28 @@ package com.boot.controller
 
 
 import com.boot.model.BaseListResponseModel
-import com.boot.model.Shipwreck
-import com.boot.model.ShipwreckResponseModel
+import com.boot.model.PetResponseModel
+import com.boot.service.PetService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-import com.boot.service.ShipwreckService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 
-@Api(value = "Shipwreck APIs", tags = ["Shipwreck"], description = "Shipwreck Services")
+@Api(value = "Pet APIs", tags = ["Pet"], description = "Shipwreck Services")
 @RestController
 @RequestMapping("api/v1/shipwreck/")
-class ShipwreckController : BaseController() {
+class PetController : BaseController() {
     @Autowired
-    private lateinit var shipwreckService: ShipwreckService
+    private lateinit var petService: PetService
 
     @ApiOperation(value = "Retrieve shipwrect list", notes = "")
     @GetMapping("")
-    fun getAllRecords(): ResponseEntity<ApiResponse<BaseListResponseModel<ShipwreckResponseModel>>> {
-        val shipwrecks = BaseListResponseModel(shipwreckService.getAllRecords())
+    fun getAllRecords(): ResponseEntity<ApiResponse<BaseListResponseModel<PetResponseModel>>> {
+        val shipwrecks = BaseListResponseModel(petService.getAllRecords())
         return getResponse(shipwrecks)
     }
 
@@ -84,7 +83,7 @@ class ShipwreckController : BaseController() {
 //
 //@RestController
 //@RequestMapping("api/v1/")
-//public class ShipwreckController {
+//public class PetController {
 //
 //	@RequestMapping(value = "shipwrecks", method = RequestMethod.GET)
 //	public List<Shipwreck> list() {

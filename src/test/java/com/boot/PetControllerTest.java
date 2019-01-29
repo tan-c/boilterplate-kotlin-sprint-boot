@@ -7,11 +7,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.boot.controller.ShipwreckController;
+import com.boot.controller.PetController;
 
-public class ShipwreckControllerTest {
+public class PetControllerTest {
 	@InjectMocks
-	private ShipwreckController sc;
+	private PetController sc;
 
 	@Mock
 	private ShipwreckRepository shipwreckRepository;
