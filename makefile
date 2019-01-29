@@ -9,6 +9,7 @@ default:  flywaydb
 
 # Run flyway db migration
 flywaydb:
-	echo 1
-#	circleci config validate -c .circleci/config.yml
-# 	circleci build --job lint
+	mvn -Dflyway.url='jdbc:h2:file:~/dasboot' -Dflyway.user=sa -Dflyway.password= flyway:info
+
+flywaydb:migrate:
+	mvn -Dflyway.url='jdbc:h2:file:~/dasboot' -Dflyway.user=sa -Dflyway.password= flyway:migrate
