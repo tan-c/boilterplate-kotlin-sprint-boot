@@ -1,8 +1,14 @@
 package com.boot.controller
 
+import com.boot.model.BaseRequestModel
 import com.boot.model.BaseResponseModel
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+
+data class ApiRequest<T : BaseRequestModel>(
+    var data: T,
+    var timestamp: Long
+)
 
 data class ApiResponse<T : BaseResponseModel>(
     var data: T?,

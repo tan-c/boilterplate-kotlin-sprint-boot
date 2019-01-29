@@ -1,31 +1,29 @@
 package com.boot.service
 
+import com.boot.model.BaseDataResponseModel
+import com.boot.model.BaseDeletedDataResponseModel
 import com.boot.model.BaseModel
 import com.boot.model.BaseResponseModel
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Service
-import javax.persistence.EntityManager
 import javax.persistence.EntityNotFoundException
-import javax.persistence.PersistenceContext
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 abstract class BaseService<
-//    PostRequestModel,
-//    PutRequestModel,
+    PostRequestModel,
+    PutRequestModel,
     ResponseModel : BaseResponseModel,
     E : BaseModel,
     R : BaseRepository<E>
-    >() : BaseContext<R>() {
+    > : BaseContext<R>() {
 
 
-
-//    // To pad new customized details for record
-//    // e.g. for eventEntity or newsEntity in banner
+    // To pad new customized details for record
+    // e.g. for eventEntity or newsEntity in banner
 //    open fun getRecordDetails(recordEntity: E): E {
 //        return recordEntity
 //    }
-//
+
     open fun getAllRecords(): List<ResponseModel> {
         return repo.findAll().mapNotNull {(it modelOf "") as ResponseModel}
     }
@@ -43,44 +41,65 @@ abstract class BaseService<
 //        )
 //    }
 
-    open fun getRecord(recordId: Long): Any {
+    open fun getRecord(recordId: Long): ResponseModel {
         val record = repo.findById(recordId)
         if (record.isPresent) {
-            return record.get()
+            return (record.get() modelOf "") as ResponseModel
         }
 
         throw EntityNotFoundException("There is no entity exists with id $recordId !")
     }
 
-//    // This function could be overwritten in the child classes
-//    open fun getCreateRecordEntity(recordRequest: PostRequestModel): BaseEntity {
-//        return BaseEntity() setCreator currentUser
-//    }
-//
-//    @Transactional(readOnly = false)
-//    open fun createRecord(recordRequest: PostRequestModel): ResponseModel {
-//        val recordEntity = getCreateRecordEntity(recordRequest)
-//        em saveAndFlush recordEntity
-//        return (recordEntity modelOf requestLocale) as ResponseModel
-//    }
-//
-//    // This function could be overwritten in the child classes
-//    open fun updateRecordEntity(recordId: Long, recordRequest: PutRequestModel): BaseEntity {
-//        return getEntity<E>(recordId)
-//    }
-//
-//    @Transactional(readOnly = false)
-//    open fun updateRecord(recordId: Long, recordRequest: PutRequestModel): BaseDataResponseModel {
-//        val recordEntity = updateRecordEntity(recordId, recordRequest)
+    // This function could be overwritten in the child classes
+    open fun getCreateRecordEntity(recordRequest: PostRequestModel): BaseModel {
+        return BaseModel()
+        // setCreator currentUser
+    }
+
+    @Transactional(readOnly = false)
+    open fun createRecord(recordRequest: PostRequestModel): ResponseModel {
+        val recordEntity = getCreateRecordEntity(recordRequest)
+        em.persist(recordEntity)
+        em.flush()
+        return (recordEntity modelOf "") as ResponseModel
+    }
+
+    // This function could be overwritten in the child classes
+    open fun updateRecordEntity(recordId: Long, recordRequest: PutRequestModel): BaseModel {
+        return getEntity<E>(recordId)
+    }
+
+    @Transactional(readOnly = false)
+    open fun updateRecord(recordId: Long, recordRequest: PutRequestModel): BaseDataResponseModel {
+        val recordEntity = updateRecordEntity(recordId, recordRequest)
 //        recordEntity setUpdator currentUser
-//        em saveAndFlush recordEntity
-//        return (recordEntity modelOf requestLocale) as BaseDataResponseModel
-//    }
-//
-//    @Transactional(readOnly = false)
-//    open fun deleteRecord(recordId: Long): BaseDeletedDataResponseModel {
-//        val recordEntity = getEntityOrNull<E>(recordId)
-//        recordEntity?.let { em delAndFlush it }
-//        return BaseDeletedDataResponseModel(recordId)
-//    }
+        em.persist(recordEntity)
+        em.flush()
+        return (recordEntity modelOf "") as BaseDataResponseModel
+    }
+
+    @Transactional(readOnly = false)
+    open fun deleteRecord(recordId: Long): BaseDeletedDataResponseModel {
+        val recordEntity = getEntityOrNull<E>(recordId)
+        recordEntity?.let {
+            em.remove(recordEntity)
+            em.flush()
+        }
+        return BaseDeletedDataResponseModel(recordId)
+    }
+
+    private fun <E : BaseModel> getEntity(id: Long, repo: BaseRepository<E>? = null): E {
+        val enRepo: BaseRepository<E> = repo ?: this.repo as BaseRepository<E>
+        val entity = enRepo.findById(id)
+        return if (entity.isPresent)
+            entity.get()
+        else
+            throw EntityNotFoundException("There is no entity exists with id $id !")
+    }
+
+    private fun <E : BaseModel> getEntityOrNull(id: Long, repo: BaseRepository<E>? = null): E? {
+        val enRepo: BaseRepository<E> = repo ?: this.repo as BaseRepository<E>
+        val entity = enRepo.findById(id)
+        return if (entity.isPresent) entity.get() else null
+    }
 }

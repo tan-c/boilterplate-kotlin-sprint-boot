@@ -22,6 +22,8 @@ open class BaseModel {
     }
 }
 
+open class BaseRequestModel
+
 open class BaseResponseModel : Serializable
 
 data class BaseListResponseModel<M : BaseResponseModel>(
@@ -36,6 +38,9 @@ open class BaseDataResponseModel : BaseResponseModel() {
 //    var updatedAt: Date? = null
 }
 
+data class BaseDeletedDataResponseModel(
+    open var id: Long
+) : BaseResponseModel()
 
 infix fun <T : BaseDataResponseModel> BaseDataResponseModel.loadBase(entity: BaseModel): T {
     this.apply {
@@ -47,3 +52,4 @@ infix fun <T : BaseDataResponseModel> BaseDataResponseModel.loadBase(entity: Bas
     }
     return this as T
 }
+

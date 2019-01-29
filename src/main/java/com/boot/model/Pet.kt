@@ -30,3 +30,13 @@ data class PetResponseModel(
     val name: String,
     val gender: String
 ) : BaseDataResponseModel()
+
+data class PetPostRequestModel(
+    val name: String,
+    val gender: String
+) : BaseRequestModel()
+
+data class PetPutRequestModel(
+    val name: String,
+    val gender: String
+) : BaseRequestModel()
