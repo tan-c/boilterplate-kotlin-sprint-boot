@@ -27,7 +27,7 @@ abstract class BaseService<
 //    }
 //
     open fun getAllRecords(): List<ResponseModel> {
-        return repo.findAll().mapNotNull {it as ResponseModel}
+        return repo.findAll().mapNotNull {(it modelOf "") as ResponseModel}
     }
 //
 //    open fun getAllRecords(searchCriteria: List<SearchCriteria>?, pageParam: PageParamModel): PageModel<ResponseModel> {

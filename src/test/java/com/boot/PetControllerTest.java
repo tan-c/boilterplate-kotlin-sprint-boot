@@ -1,6 +1,6 @@
 package com.boot;
 
-import com.boot.model.ShipwreckRepository;
+import com.boot.model.PetRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -14,7 +14,7 @@ public class PetControllerTest {
 	private PetController sc;
 
 	@Mock
-	private ShipwreckRepository shipwreckRepository;
+	private PetRepository petRepository;
 
     @Before
     public void init() {
