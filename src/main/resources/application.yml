@@ -20,6 +20,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+      show_sql: true
 
 flyway:
   baseline-on-migrate: true
@@ -42,3 +43,4 @@ logging:
   charset: UTF-8
   level:
     org.springframework.web: DEBUG
+

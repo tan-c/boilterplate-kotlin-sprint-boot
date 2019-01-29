@@ -1,6 +1,5 @@
 package com.boot.controller
 
-
 import com.boot.model.BaseListResponseModel
 import com.boot.model.PetResponseModel
 import com.boot.service.PetService
@@ -13,28 +12,28 @@ import io.swagger.annotations.ApiOperation
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 
-@Api(value = "Pet APIs", tags = ["Pet"], description = "Shipwreck Services")
+@Api(value = "Pet APIs", tags = ["Pet"], description = "Pet Services")
 @RestController
-@RequestMapping("api/v1/shipwreck/")
+@RequestMapping("api/v1/pets")
 class PetController : BaseController() {
     @Autowired
     private lateinit var petService: PetService
 
-    @ApiOperation(value = "Retrieve shipwrect list", notes = "")
+    @ApiOperation(value = "Retrieve pet list", notes = "")
     @GetMapping("")
     fun getAllRecords(): ResponseEntity<ApiResponse<BaseListResponseModel<PetResponseModel>>> {
-        val shipwrecks = BaseListResponseModel(petService.getAllRecords())
-        return getResponse(shipwrecks)
+        val pets = BaseListResponseModel(petService.getAllRecords())
+        return getResponse(pets)
     }
 
 //    @RequestMapping(value = "shipwrecks", method = arrayOf(RequestMethod.POST))
-//    fun create(@RequestBody shipwreck: Shipwreck): Shipwreck {
+//    fun create(@RequestBody shipwreck: Pet): Pet {
 //        return shipwreckRepository!!.saveAndFlush(shipwreck)
 //    }
 //
 //    @RequestMapping(value = "shipwrecks/{id}", method = arrayOf(RequestMethod.GET))
 //    @Throws(ResourceNotFoundException::class)
-//    operator fun get(@PathVariable id: Long?): Shipwreck? {
+//    operator fun get(@PathVariable id: Long?): Pet? {
 //        val record = shipwreckRepository!!.findById(id)
 //        return if (record.isPresent) {
 //            record.get()
@@ -42,7 +41,7 @@ class PetController : BaseController() {
 //            null
 //        }
 //
-//        //		Shipwreck record = shipwreckRepository.findById(id)
+//        //		Pet record = shipwreckRepository.findById(id)
 //        //					.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
 //        ////		return record.get();
 //        //		if (record.isPresent()) {
@@ -53,15 +52,15 @@ class PetController : BaseController() {
 //    }
 //
 //    //	@RequestMapping(value = "shipwrecks/{id}", method = RequestMethod.PUT)
-//    //	public Shipwreck update(@PathVariable Long id, @RequestBody Shipwreck shipwreck) throws ResourceNotFoundException {
-//    //		Optional<Shipwreck> existingShipwreck = shipwreckRepository.findById(id);
-//    //		BeanUtils.copyProperties(shipwreck, existingShipwreck);
-//    //		return shipwreckRepository.saveAndFlush(existingShipwreck);
+//    //	public Pet update(@PathVariable Long id, @RequestBody Pet shipwreck) throws ResourceNotFoundException {
+//    //		Optional<Pet> existingPet = shipwreckRepository.findById(id);
+//    //		BeanUtils.copyProperties(shipwreck, existingPet);
+//    //		return shipwreckRepository.saveAndFlush(existingPet);
 //    //	}
 //
 //    @RequestMapping(value = "shipwrecks/{id}", method = arrayOf(RequestMethod.DELETE))
 //    @Throws(ResourceNotFoundException::class)
-//    fun delete(@PathVariable id: Long?): Shipwreck {
+//    fun delete(@PathVariable id: Long?): Pet {
 //        val existingRecord = shipwreckRepository!!.findById(id)
 //            .orElseThrow { ResourceNotFoundException("Employee not found for this id :: " + id!!) }
 //        shipwreckRepository.delete(existingRecord)
@@ -79,35 +78,35 @@ class PetController : BaseController() {
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RestController;
 //
-//import com.boot.model.Shipwreck;
+//import com.boot.model.Pet;
 //
 //@RestController
 //@RequestMapping("api/v1/")
 //public class PetController {
 //
 //	@RequestMapping(value = "shipwrecks", method = RequestMethod.GET)
-//	public List<Shipwreck> list() {
-//		return ShipwreckStub.list();
+//	public List<Pet> list() {
+//		return PetStub.list();
 //	}
 //
 //	@RequestMapping(value = "shipwrecks", method = RequestMethod.POST)
-//	public Shipwreck create(@RequestBody Shipwreck shipwreck) {
-//		return ShipwreckStub.create(shipwreck);
+//	public Pet create(@RequestBody Pet shipwreck) {
+//		return PetStub.create(shipwreck);
 //	}
 //
 //	@RequestMapping(value = "shipwrecks/{id}", method = RequestMethod.GET)
-//	public Shipwreck get(@PathVariable Long id) {
-//		return ShipwreckStub.get(id);
+//	public Pet get(@PathVariable Long id) {
+//		return PetStub.get(id);
 //	}
 //
 //	@RequestMapping(value = "shipwrecks/{id}", method = RequestMethod.PUT)
-//	public Shipwreck update(@PathVariable Long id, @RequestBody Shipwreck shipwreck) {
-//		return ShipwreckStub.update(id, shipwreck);
+//	public Pet update(@PathVariable Long id, @RequestBody Pet shipwreck) {
+//		return PetStub.update(id, shipwreck);
 //	}
 //
 //	@RequestMapping(value = "shipwrecks/{id}", method = RequestMethod.DELETE)
-//	public Shipwreck delete(@PathVariable Long id) {
-//		return ShipwreckStub.delete(id);
+//	public Pet delete(@PathVariable Long id) {
+//		return PetStub.delete(id);
 //	}
 //
 //}

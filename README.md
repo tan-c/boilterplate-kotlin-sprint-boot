@@ -17,4 +17,4 @@ mvn -Dflyway.url='jdbc:sqlserver://localhost:32768;database=uat-stey-01' -Dflywa
 ### Add New Migration File
 1. Create a new migration file in resource/db/migration. It has to start with a version number followed bu double underscore. e.g. V1.1_Add_uid_to_banner_table
 2. Run `mvn flyway:info` to verify current state and `mvn flyway:validate` to ensure that validation can work
-3. Run `mvn flyway:migrate` to migrate the DB 
+3. Run `mvn flyway:migrate` to migrate the DB, or just `make migrate` 
