@@ -2,7 +2,7 @@ package com.boot
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer
+//import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer
 
 
 //object App {
@@ -15,7 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 
 @SpringBootApplication
-@EnableResourceServer
+//@EnableResourceServer
 open class App {
     companion object {
         @JvmStatic

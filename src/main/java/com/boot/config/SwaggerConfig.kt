@@ -28,33 +28,10 @@ open class SwaggerConfig {
     @Bean
     open fun apiInfo(): ApiInfo {
         val builder = ApiInfoBuilder()
-        val contact = Contact("admin@beyondsoft.com", "", "Admin")
-        builder.title("AuthService Api").version("1.0").license("(C) Copyright Stey")
-            .description("Stey Digital Restful APIs").contact(contact)
+        val contact = Contact("tanchen2014@gmail.com", "", "Admin")
+        builder.title("Kotlin Boilerplate Api").version("1.0").license("(C) Copyright Tc")
+            .description("Kotlin Boilerplate Restful APIs").contact(contact)
 
         return builder.build()
     }
 }
-
-//@EnableSwagger2
-//@Component
-//class SwaggerConfig {
-//    @Bean
-//    fun api(): Docket {
-//        return Docket(DocumentationType.SWAGGER_2).select()
-//                .apis(RequestHandlerSelectors.withClassAnnotation(Api::class.java))
-//                .paths(PathSelectors.any())
-//                .build()
-//                .pathMapping("/").apiInfo(apiInfo())
-//    }
-//
-//    @Bean
-//    fun apiInfo(): ApiInfo {
-//        val builder = ApiInfoBuilder()
-//        val contact = Contact("admin@beyondsoft.com", "", "Admin")
-//        builder.title("SteyService Api").version("1.0").license("(C) Copyright Stey")
-//                .description("Stey Digital Restful APIs").contact(contact)
-//
-//        return builder.build()
-//    }
-//}
