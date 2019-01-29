@@ -1,27 +1,29 @@
 package com.boot.controller
 
 
+import com.boot.model.BaseListResponseModel
+import com.boot.model.Shipwreck
+import com.boot.model.ShipwreckResponseModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-import com.boot.model.Shipwreck
-import com.boot.repository.ShipwreckRepository
+import com.boot.service.ShipwreckService
 import io.swagger.annotations.ApiOperation
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 
 @RestController
 @RequestMapping("api/v1/")
-class ShipwreckController {
-
+class ShipwreckController : BaseController() {
     @Autowired
-    private val shipwreckRepository: ShipwreckRepository? = null
+    private lateinit var shipwreckService: ShipwreckService
 
-    @ApiOperation(value = "Retrieve shipwrecks list", notes = "")
+    @ApiOperation(value = "Retrieve shipwrect list", notes = "")
     @GetMapping("")
-//    @RequestMapping(value = "shipwrecks", method = arrayOf(RequestMethod.GET))
-    fun list(): List<Shipwreck> {
-        return shipwreckRepository!!.findAll()
+    fun getAllRecords(): ResponseEntity<ApiResponse<BaseListResponseModel<ShipwreckResponseModel>>> {
+        val shipwrecks = BaseListResponseModel(shipwreckService.getAllRecords())
+        return getResponse(shipwrecks)
     }
 
 //    @RequestMapping(value = "shipwrecks", method = arrayOf(RequestMethod.POST))
