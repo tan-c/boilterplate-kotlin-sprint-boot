@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 import com.boot.service.ShipwreckService
+import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 
+@Api(value = "Shipwreck APIs", tags = ["Shipwreck"], description = "Shipwreck Services")
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("api/v1/shipwreck/")
 class ShipwreckController : BaseController() {
     @Autowired
     private lateinit var shipwreckService: ShipwreckService

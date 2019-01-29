@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class HomeController {
-
     @RequestMapping("/")
     fun home(): String {
         return "Das Boot, reporting for duty!"
