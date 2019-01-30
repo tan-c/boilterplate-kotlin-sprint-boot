@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass
 open class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0
+    var id: Long = 0
 //    var createdBy: String? = null
 //    var createdAt: Date? = null
 //    var updatedBy: String? = null
