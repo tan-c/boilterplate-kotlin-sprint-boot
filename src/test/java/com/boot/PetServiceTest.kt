@@ -1,22 +1,11 @@
 package com.boot
 
-import com.boot.model.PetEntity
-import com.boot.model.PetRepository
-import org.junit.Before
 import org.junit.Test
-import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.MockitoAnnotations
-
-import com.boot.controller.PetController
 import com.boot.model.PetResponseModel
 import com.boot.service.PetService
 import org.junit.Assert
 import org.junit.runner.RunWith
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -29,7 +18,7 @@ class PetServiceTest {
     lateinit var petService: PetService
 
     @Test
-    fun testShipwreckGet() {
+    fun testPetService() {
         val petResponse = PetResponseModel(
             name = "1",
             gender = "male",

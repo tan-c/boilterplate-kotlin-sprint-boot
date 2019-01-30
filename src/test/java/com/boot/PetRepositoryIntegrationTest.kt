@@ -14,7 +14,7 @@ import org.hamcrest.Matchers.*
 @SpringBootTest(classes = [App::class])
 class ShipwreckRepositoryIntegrationTest {
     @Autowired
-    private val petRepository: PetRepository? = null
+    lateinit var petRepository: PetRepository
 
     @Test
     fun testFindAll() {
