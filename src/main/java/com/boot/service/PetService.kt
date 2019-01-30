@@ -17,11 +17,19 @@ open class PetService : BaseService<
     PetRepository
     >() {
 
-    override fun getCreateRecordEntity(petRequest: PetPostRequestModel): BaseModel {
+    override fun getCreatedRecordEntity(recordPostRequest: PetPostRequestModel): BaseModel {
         return Pet (
-            name = petRequest.name,
-            gender = petRequest.gender,
-            owner_id = petRequest.owner_id
+            name = recordPostRequest.name,
+            gender = recordPostRequest.gender,
+            owner_id = recordPostRequest.owner_id
         )
+    }
+
+    override fun getUpdatedRecordEntity(recordId: Long, recordPutRequest: PetPutRequestModel): BaseModel {
+        val record = getEntity<Pet>(recordId)
+        record.name = recordPutRequest.name
+        record.gender = recordPutRequest.gender
+        record.owner_id = recordPutRequest.owner_id
+        return record
     }
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table
 data class Pet (
     var name: String,
     var gender: String,
-    val owner_id: Int?
+    var owner_id: Int?
 //    var depth: Int? = null,
 //    var latitude: Double? = null,
 //    var longitude: Double? = null,

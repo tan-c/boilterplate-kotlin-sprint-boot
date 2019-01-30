@@ -51,27 +51,27 @@ abstract class BaseService<
     }
 
     // This function could be overwritten in the child classes
-    open fun getCreateRecordEntity(recordRequest: PostRequestModel): BaseModel {
+    open fun getCreatedRecordEntity(recordRequest: PostRequestModel): BaseModel {
         return BaseModel()
         // setCreator currentUser
     }
 
     @Transactional(readOnly = false)
     open fun createRecord(recordRequest: PostRequestModel): ResponseModel {
-        val recordEntity = getCreateRecordEntity(recordRequest)
+        val recordEntity = getCreatedRecordEntity(recordRequest)
         em.persist(recordEntity)
         em.flush()
         return (recordEntity modelOf "") as ResponseModel
     }
 
     // This function could be overwritten in the child classes
-    open fun updateRecordEntity(recordId: Long, recordRequest: PutRequestModel): BaseModel {
+    open fun getUpdatedRecordEntity(recordId: Long, recordRequest: PutRequestModel): BaseModel {
         return getEntity<E>(recordId)
     }
 
     @Transactional(readOnly = false)
     open fun updateRecord(recordId: Long, recordRequest: PutRequestModel): BaseDataResponseModel {
-        val recordEntity = updateRecordEntity(recordId, recordRequest)
+        val recordEntity = getUpdatedRecordEntity(recordId, recordRequest)
 //        recordEntity setUpdator currentUser
         em.persist(recordEntity)
         em.flush()
@@ -88,7 +88,7 @@ abstract class BaseService<
         return BaseDeletedDataResponseModel(recordId)
     }
 
-    private fun <E : BaseModel> getEntity(id: Long, repo: BaseRepository<E>? = null): E {
+    fun <E : BaseModel> getEntity(id: Long, repo: BaseRepository<E>? = null): E {
         val enRepo: BaseRepository<E> = repo ?: this.repo as BaseRepository<E>
         val entity = enRepo.findById(id)
         return if (entity.isPresent)
@@ -97,7 +97,7 @@ abstract class BaseService<
             throw EntityNotFoundException("There is no entity exists with id $id !")
     }
 
-    private fun <E : BaseModel> getEntityOrNull(id: Long, repo: BaseRepository<E>? = null): E? {
+    fun <E : BaseModel> getEntityOrNull(id: Long, repo: BaseRepository<E>? = null): E? {
         val enRepo: BaseRepository<E> = repo ?: this.repo as BaseRepository<E>
         val entity = enRepo.findById(id)
         return if (entity.isPresent) entity.get() else null
