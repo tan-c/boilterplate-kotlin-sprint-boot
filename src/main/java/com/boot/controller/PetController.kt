@@ -3,7 +3,6 @@ package com.boot.controller
 import com.boot.model.BaseDataResponseModel
 import com.boot.model.BaseListResponseModel
 import com.boot.model.BaseResponseModel
-import com.boot.model.Pet
 import com.boot.model.PetPostRequestModel
 import com.boot.model.PetPutRequestModel
 import com.boot.model.PetResponseModel
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMethod
 
 @Api(value = "Pet APIs", tags = ["Pet"], description = "Pet Services")
 @RestController
@@ -53,7 +51,6 @@ class PetController : BaseController() {
         return getResponse(event)
     }
 
-
     @ApiOperation(value = "Update pet by id", notes = "")
     @PutMapping("/{petId}")
     fun updateRecord(
@@ -63,7 +60,6 @@ class PetController : BaseController() {
         val updatedRecord = petService.updateRecord(petId, request.data)
         return getResponse(updatedRecord)
     }
-
 
     @ApiOperation(value = "Delete pet by id", notes = "")
     @DeleteMapping("/{petId}")

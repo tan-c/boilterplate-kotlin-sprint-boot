@@ -4,7 +4,7 @@ CREATE TABLE pet(
 	gender VARCHAR(100) NOT NULL,
   species VARCHAR(100),
   breed VARCHAR(100),
-  owner_id INT NOT NULL
+  owner_id INT
 );
 
 CREATE TABLE owner(
