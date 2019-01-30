@@ -21,7 +21,7 @@ open class PetService : BaseService<
         return Pet (
             name = recordPostRequest.name,
             gender = recordPostRequest.gender,
-            owner_id = recordPostRequest.owner_id
+            owner = if(recordPostRequest.owner_id == null) null else getEntity(recordPostRequest.owner_id)
         )
     }
 
@@ -29,7 +29,7 @@ open class PetService : BaseService<
         val record = getEntity<Pet>(recordId)
         record.name = recordPutRequest.name
         record.gender = recordPutRequest.gender
-        record.owner_id = recordPutRequest.owner_id
+        record.owner = if(recordPutRequest.owner_id == null) null else getEntity(recordPutRequest.owner_id)
         return record
     }
 }

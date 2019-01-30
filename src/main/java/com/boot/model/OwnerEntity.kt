@@ -10,45 +10,46 @@ import javax.persistence.OneToOne
 import javax.persistence.Table
 
 @Entity
-@Table(name = "PET", schema = "PUBLIC")
+@Table(name = "OWNER", schema = "PUBLIC")
 @DynamicUpdate
-data class Pet (
+data class OwnerEntity (
     var name: String,
     var gender: String,
+    var email: String?
 
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id")
-    var owner: OwnerEntity? = null
+//    @OneToOne(
+//        mappedBy = "OWNER",
+//        fetch = FetchType.EAGER,
+//        cascade = [CascadeType.PERSIST]
+//    )
+//    @OneToOne(mappedBy = "event", fetch = FetchType.EAGER, cascade = [CascadeType.PERSIST])
+//    var owner_id: OwnerModel? = null
 //    var owner_id: Int?
-//    var depth: Int? = null,
-//    var latitude: Double? = null,
-//    var longitude: Double? = null,
-//    var yearDiscovered: Int? = null
 ): BaseModel() {
-    override infix fun modelOf(params: Any): PetResponseModel = PetResponseModel(
+    override infix fun modelOf(params: Any): OwnerResponseModel = OwnerResponseModel(
         name = name,
         gender = gender,
-        owner = owner?.modelOf("")
+        email = email
     ) loadBase this
 }
 
-interface PetRepository : BaseRepository<Pet>
+interface OwnerRepository : BaseRepository<OwnerEntity>
 
-data class PetResponseModel(
+data class OwnerResponseModel(
     val name: String,
     val gender: String,
-    val owner: OwnerResponseModel?
+    val email: String?
 ) : BaseDataResponseModel()
 
-data class PetPostRequestModel(
+data class OwnerPostRequestModel(
     val name: String,
     val gender: String,
-    val owner_id: Long?
+    val email: String?
 ) : BaseRequestModel()
 
-data class PetPutRequestModel(
+data class OwnerPutRequestModel(
     val name: String,
     val gender: String,
-    val owner_id: Long?
+    val email: String?
 ) : BaseRequestModel()
