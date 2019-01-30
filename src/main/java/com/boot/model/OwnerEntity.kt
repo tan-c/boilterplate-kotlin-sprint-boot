@@ -2,11 +2,7 @@ package com.boot.model
 
 import com.boot.service.BaseRepository
 import org.hibernate.annotations.DynamicUpdate
-import javax.persistence.CascadeType
 import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.JoinColumn
-import javax.persistence.OneToOne
 import javax.persistence.Table
 
 @Entity
