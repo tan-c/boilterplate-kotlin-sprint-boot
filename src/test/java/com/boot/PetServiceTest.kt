@@ -18,15 +18,14 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.mockito.Mockito
+import org.mockito.junit.MockitoJUnitRunner
 
-
-
-@ActiveProfiles("test")
-@RunWith(SpringJUnit4ClassRunner::class)
-//@SpringApplicationConfiguration(App.class)
-@SpringBootTest(classes = [App::class])
-class PetControllerTest {
-    @Autowired
+//@ActiveProfiles("test")
+//@RunWith(SpringJUnit4ClassRunner::class)
+//@SpringBootTest(classes = [App::class])
+@RunWith(MockitoJUnitRunner::class)
+class PetServiceTest {
+    @Mock
     lateinit var petService: PetService
 
     @Test

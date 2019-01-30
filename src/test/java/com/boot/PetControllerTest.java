@@ -4,12 +4,15 @@ import com.boot.model.PetEntity;
 import com.boot.model.PetRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.boot.controller.PetController;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PetControllerTest {
 	@InjectMocks
 	private PetController petController;
