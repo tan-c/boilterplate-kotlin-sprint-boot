@@ -12,10 +12,9 @@ import javax.persistence.Table
 @Entity
 @Table(name = "PET", schema = "PUBLIC")
 @DynamicUpdate
-data class Pet (
-    var name: String,
-    var gender: String,
-
+data class PetEntity (
+    var name: String = "",
+    var gender: String = "",
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
@@ -33,7 +32,7 @@ data class Pet (
     ) loadBase this
 }
 
-interface PetRepository : BaseRepository<Pet>
+interface PetRepository : BaseRepository<PetEntity>
 
 data class PetResponseModel(
     val name: String,
