@@ -9,23 +9,35 @@ import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
 import com.boot.controller.PetController
+import com.boot.model.PetResponseModel
 import com.boot.service.PetService
+import org.junit.Assert
+import org.junit.runner.RunWith
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+import org.mockito.Mockito
 
+
+
+@ActiveProfiles("test")
+@RunWith(SpringJUnit4ClassRunner::class)
+//@SpringApplicationConfiguration(App.class)
+@SpringBootTest(classes = [App::class])
 class PetControllerTest {
-    @InjectMocks
+    @Autowired
     lateinit var petService: PetService
 
     @Test
     fun testShipwreckGet() {
-        val pet = petService.getRecord(1)
-        pet.id = 1L
-        //		when(petRepository.findById(1l)).thenReturn(pet);
-        //
-        //		PetEntity wreck = petController.get(1L);
-        //
-        //		verify(petRepository).findById(1l);
-        //
-        //		assertEquals(1l, pet.getId().longValue());
-        //		assertThat(pet.getId(), is(1l));
+        val petResponse = PetResponseModel(
+            name = "1",
+            gender = "male",
+            owner = null
+        )
+        Mockito.`when`(petService.getRecord(1)).thenReturn(petResponse)
+        val testResult = petService.getRecord(1)
+        Assert.assertEquals(petResponse, testResult)
     }
 }
