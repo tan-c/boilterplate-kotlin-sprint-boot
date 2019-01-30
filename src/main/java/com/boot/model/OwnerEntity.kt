@@ -9,10 +9,9 @@ import javax.persistence.Table
 @Table(name = "OWNER", schema = "PUBLIC")
 @DynamicUpdate
 data class OwnerEntity (
-    var name: String,
-    var gender: String,
-    var email: String?
-
+    var name: String = "",
+    var gender: String = "",
+    var email: String? = null
 
 //    @OneToOne(
 //        mappedBy = "OWNER",
