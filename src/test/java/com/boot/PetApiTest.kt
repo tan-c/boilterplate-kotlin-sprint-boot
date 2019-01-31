@@ -16,7 +16,7 @@ import org.hamcrest.Matchers.*
 
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest(classes = [App::class])
-class PetControllerIntegrationTest {
+class PetApiTest {
     @Test
     @Throws(IOException::class)
     fun testListAllPets() {
