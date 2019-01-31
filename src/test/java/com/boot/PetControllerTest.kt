@@ -23,7 +23,7 @@ class PetControllerTest: BaseController() {
     lateinit var petController: PetController
 
     @Mock
-    var petService = PetService()
+    lateinit var petService: PetService
 
     private val petEntity = PetEntity(
         name = "1",
