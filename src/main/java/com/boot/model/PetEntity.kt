@@ -6,6 +6,7 @@ import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
 import javax.persistence.OneToOne
 import javax.persistence.Table
 
@@ -16,7 +17,7 @@ data class PetEntity (
     var name: String = "",
     var gender: String = "",
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     var owner: OwnerEntity? = null
 //    var owner_id: Int?
@@ -28,7 +29,13 @@ data class PetEntity (
     override infix fun modelOf(params: Any): PetResponseModel = PetResponseModel(
         name = name,
         gender = gender,
-        owner = owner?.modelOf("")
+        owner = owner?.simpleModelOf("")
+    ) loadBase this
+
+    override infix fun simpleModelOf(params: Any): PetResponseModel = PetResponseModel(
+        name = name,
+        gender = gender,
+        owner = null
     ) loadBase this
 }
 

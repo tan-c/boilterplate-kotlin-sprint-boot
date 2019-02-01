@@ -1,8 +1,5 @@
 package com.boot
 
-import com.boot.controller.ApiResponse
-import com.boot.model.BaseResponseModel
-import com.boot.model.PetResponseModel
 import java.io.IOException
 
 import org.junit.Test

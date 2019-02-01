@@ -20,6 +20,10 @@ open class BaseModel {
     open infix fun modelOf(params: Any): Any {
         return BaseResponseModel()
     }
+
+    open infix fun simpleModelOf(params: Any): Any {
+        return BaseResponseModel()
+    }
 }
 
 open class BaseRequestModel
