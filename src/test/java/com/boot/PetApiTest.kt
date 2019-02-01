@@ -1,5 +1,8 @@
 package com.boot
 
+import com.boot.controller.ApiResponse
+import com.boot.model.BaseResponseModel
+import com.boot.model.PetResponseModel
 import java.io.IOException
 
 import org.junit.Test
@@ -9,10 +12,10 @@ import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpStatus
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 
-import com.fasterxml.jackson.databind.ObjectMapper
-
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
+import java.util.HashMap
+
 
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest(classes = [App::class])
@@ -21,14 +24,14 @@ class PetApiTest {
     @Throws(IOException::class)
     fun testListAllPets() {
         val testRestTemplate = TestRestTemplate()
-        val response = testRestTemplate.getForEntity("http://localhost:8088/api/v1/pets", String::class.java)
+        // FIXME: Using ApiResponse instead of HashMap to marshall the output
+        val responseEntity = testRestTemplate.getForEntity("http://localhost:8088/api/v1/pets", HashMap::class.java)
 
-        assertThat(response.statusCode, equalTo(HttpStatus.OK))
-
-        val objectMapper = ObjectMapper()
-        val responseJson = objectMapper.readTree(response.body)
-
-        assertThat(responseJson.isMissingNode, `is`(false))
-        //	    assertThat( responseJson.toString() , not(null) );
+        val objects = responseEntity.body
+        val contentType = responseEntity.headers.contentType
+        val statusCode = responseEntity.statusCode
+        assertThat(statusCode, equalTo(HttpStatus.OK))
+        assertThat(objects.get("data"), notNullValue())
+        assertThat(objects.get("error"), notNullValue())
     }
 }
