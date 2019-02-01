@@ -1,7 +1,7 @@
 package com.boot
 
-import com.boot.model.PetEntity
-import com.boot.model.PetRepository
+import com.boot.model.OwnerEntity
+import com.boot.model.OwnerRepository
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,25 +15,25 @@ import java.util.Optional
 
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest(classes = [App::class])
-class PetRepositoryIT {
+class OwnerRepositoryIT {
     @Autowired
-    lateinit var petRepository: PetRepository
+    lateinit var ownerRepository: OwnerRepository
 
-    private var petEntity = PetEntity(
-        name = "new pet",
+    private var ownerEntity = OwnerEntity(
+        name = "new owner",
         gender = "male"
     )
 
     @After
     @Throws(Exception::class)
     fun tearDown() {
-        petRepository.deleteById(petEntity.id)
+        ownerRepository.deleteById(ownerEntity.id)
     }
 
     @Test
-    fun testCreatingPetRecord() {
-        petRepository.save(petEntity)
-        val maybeNewlyCreatedPet = petRepository.findById(petEntity.id)
-        assertThat(maybeNewlyCreatedPet, `is`(Optional.of(petEntity)))
+    fun testCreatingOwnerRecord() {
+        ownerRepository.save(ownerEntity)
+        val maybeNewlyCreatedOwner = ownerRepository.findById(ownerEntity.id)
+        assertThat(maybeNewlyCreatedOwner, `is`(Optional.of(ownerEntity)))
     }
 }
