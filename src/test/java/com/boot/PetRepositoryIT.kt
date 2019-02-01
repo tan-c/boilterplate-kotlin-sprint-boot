@@ -15,7 +15,7 @@ import java.util.Optional
 
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest(classes = [App::class])
-class PetRepositoryIntegrationTest {
+class PetRepositoryIT {
     @Autowired
     lateinit var petRepository: PetRepository
 
