@@ -1,5 +1,7 @@
 package com.boot
 
+import com.boot.model.OwnerEntity
+import com.boot.model.OwnerRepository
 import com.boot.model.PetEntity
 import com.boot.model.PetRepository
 import org.junit.Test
@@ -19,21 +21,35 @@ class PetRepositoryIT {
     @Autowired
     lateinit var petRepository: PetRepository
 
+    @Autowired
+    lateinit var ownerRepository: OwnerRepository
+
+    private var ownerEntity = OwnerEntity(
+        name = "new owner",
+        gender = "male",
+        email = "newowner@gmail.com"
+    )
+
     private var petEntity = PetEntity(
         name = "new pet",
-        gender = "male"
+        gender = "male",
+        owner = ownerEntity
     )
 
     @After
     @Throws(Exception::class)
     fun tearDown() {
-        petRepository.deleteById(petEntity.id)
+//        petRepository.deleteById(petEntity.id)
+        // Need to delete owner manually as petEntity does not cascade delete owner
+        // Note tgat deleting owner will delete the pets associated automatically
+        ownerRepository.deleteById(ownerEntity.id)
     }
 
     @Test
     fun testCreatingPetRecord() {
         petRepository.save(petEntity)
         val maybeNewlyCreatedPet = petRepository.findById(petEntity.id)
-        assertThat(maybeNewlyCreatedPet, `is`(Optional.of(petEntity)))
+        assertThat(maybeNewlyCreatedPet!!.get().id, `is`(Optional.of(petEntity).get().id))
+        assertThat(maybeNewlyCreatedPet!!.get().owner?.id, `is`(Optional.of(petEntity).get().owner?.id))
     }
 }

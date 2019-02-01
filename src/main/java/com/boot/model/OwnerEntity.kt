@@ -19,8 +19,8 @@ data class OwnerEntity (
 
     @OneToMany(
         mappedBy = "owner",
-        fetch = FetchType.LAZY
-//        cascade = [CascadeTye.PERSIST, CascadeType.REMOVE]
+        fetch = FetchType.LAZY,
+        cascade = [CascadeType.PERSIST, CascadeType.REMOVE]
     )
     val pets: List<PetEntity>? = null
 ): BaseModel() {

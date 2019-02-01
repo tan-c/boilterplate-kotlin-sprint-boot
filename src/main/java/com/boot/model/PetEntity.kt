@@ -17,7 +17,10 @@ data class PetEntity (
     var name: String = "",
     var gender: String = "",
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(
+        fetch = FetchType.LAZY,
+        cascade = [CascadeType.PERSIST]
+    )
     @JoinColumn(name = "owner_id")
     var owner: OwnerEntity? = null
 //    var owner_id: Int?
