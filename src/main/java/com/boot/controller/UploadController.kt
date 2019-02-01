@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile
 import com.boot.service.ConverterService
 import com.boot.service.GifEncoderService
 import com.boot.service.VideoDecoderService
+import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 
 import javax.inject.Inject
@@ -17,6 +18,7 @@ import java.lang.invoke.MethodHandles
 import java.nio.file.Paths
 
 @RestController
+@Api(value = "Upload", tags = ["Upload"], description = "Upload Services")
 class UploadController {
 
     @Value("\${multipart.location}")
