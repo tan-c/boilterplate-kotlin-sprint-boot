@@ -1,3 +1,11 @@
+# Kotlin + Spring Boot Boilterplate
+This is a boilerpalte code for Kotlin + Spring Boot + Gradle for a basic API server
+
+Features including
+- Spring CRUD with base controller
+- Sample unit/integration/api tests
+- detekt integration
+
 ## DB Migration
 
 FlywayDB is used to manage DB migration. https://flywaydb.org/ and https://flywaydb.org/documentation/maven/
