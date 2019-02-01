@@ -19,7 +19,7 @@ import java.util.HashMap
 
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest(classes = [App::class])
-class PetApiTest {
+class PetApiIT {
     @Test
     @Throws(IOException::class)
     fun testListAllPets() {
