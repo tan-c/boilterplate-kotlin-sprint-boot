@@ -1,14 +1,18 @@
 default:  flywaydb
 
+# Alternatively you can run make:migrate with specified H2_DIR
+# H2_DIR=integration make:migrate
+H2_DIR ?= 'dasboot'
+
 # Run flyway db migration
 ktlint:
 	ktlint --apply-to-idea-project
 
 flywaydb:
-	mvn -Dflyway.url='jdbc:h2:file:~/dasboot' -Dflyway.user=sa -Dflyway.password= flyway:info
+	mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:info
 
 migrate:
-	mvn -Dflyway.url='jdbc:h2:file:~/dasboot' -Dflyway.user=sa -Dflyway.password= flyway:migrate
+	mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:migrate
 
 clean:
-	mvn -Dflyway.url='jdbc:h2:file:~/dasboot' -Dflyway.user=sa -Dflyway.password= flyway:clean
+	mvn -Dflyway.url='jdbc:h2:file:~/$()H2_DIR' -Dflyway.user=sa -Dflyway.password= flyway:clean
