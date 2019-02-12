@@ -6,7 +6,6 @@ import org.junit.Assert.assertEquals
 import com.boot.controller.HomeController
 
 class HomeControllerTest {
-
     @Test
     fun testHomeController() {
         val hc = HomeController()

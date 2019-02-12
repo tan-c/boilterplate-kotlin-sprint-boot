@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
+import org.springframework.test.context.ActiveProfiles
 import java.util.HashMap
-
 
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest(classes = [App::class])
@@ -22,6 +22,8 @@ class PetApiIT {
     fun testListAllPets() {
         val testRestTemplate = TestRestTemplate()
         // FIXME: Using ApiResponse instead of HashMap to marshall the output
+
+        // FIXME: you should not be using the absoluate URI, using a var to represent the first part
         val responseEntity = testRestTemplate.getForEntity("http://localhost:8088/api/v1/pets", HashMap::class.java)
 
         val objects = responseEntity.body
