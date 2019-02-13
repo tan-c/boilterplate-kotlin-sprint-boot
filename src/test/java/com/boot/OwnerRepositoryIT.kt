@@ -34,6 +34,6 @@ class OwnerRepositoryIT {
     fun testCreatingOwnerRecord() {
         ownerRepository.save(ownerEntity)
         val maybeNewlyCreatedOwner = ownerRepository.findById(ownerEntity.id)
-        assertThat(maybeNewlyCreatedOwner, `is`(Optional.of(ownerEntity)))
+        assertThat(maybeNewlyCreatedOwner!!.get().id, `is`(Optional.of(ownerEntity).get().id))
     }
 }

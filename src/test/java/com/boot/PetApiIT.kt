@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
-import org.springframework.test.context.ActiveProfiles
 import java.util.HashMap
 
 @RunWith(SpringJUnit4ClassRunner::class)

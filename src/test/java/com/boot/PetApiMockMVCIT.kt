@@ -32,7 +32,7 @@ class PetApiMockMVCIT {
     lateinit var petRepository: PetRepository
 
     private var petEntity = PetEntity(
-        name = "new pet",
+        name = "new pet1",
         gender = "male",
         owner = null
     )
