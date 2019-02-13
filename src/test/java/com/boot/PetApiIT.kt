@@ -14,7 +14,7 @@ import org.hamcrest.Matchers.*
 import java.util.HashMap
 
 @RunWith(SpringJUnit4ClassRunner::class)
-@SpringBootTest(classes = [App::class])
+@SpringBootTest(classes = [App::class], webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
 class PetApiIT {
     @Test
     @Throws(IOException::class)
