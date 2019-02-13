@@ -52,8 +52,8 @@ class PetApiMockMVCIT {
         mvc.perform(get(urlTemplate).contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("data.name", `is`("new pet")))
-            .andExpect(jsonPath("data.gender", `is`("male")))
+            .andExpect(jsonPath("data.name", `is`(petEntity.name)))
+            .andExpect(jsonPath("data.gender", `is`(petEntity.gender)))
             .andExpect(jsonPath("data.owner").value(IsNull.nullValue()))
     }
 }
