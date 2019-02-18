@@ -39,8 +39,11 @@ multipart:
   maxRequestSize: 50MB
   location: ${java.io.tmpdir}
 
+
 logging:
   charset: UTF-8
   level:
+#    root: DEBUG
     org.springframework.web: DEBUG
-
+#    org.springframework.security: INFO
+#    org.springframework.boot.autoconfigure.security: INFO

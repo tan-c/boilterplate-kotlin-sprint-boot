@@ -1,6 +1,5 @@
 package com.boot.model
 
-import org.springframework.data.jpa.domain.AbstractAuditable_.createdBy
 import java.io.Serializable
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
