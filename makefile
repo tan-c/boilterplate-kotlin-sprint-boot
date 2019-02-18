@@ -16,3 +16,6 @@ migrate:
 
 clean:
 	mvn -Dflyway.url='jdbc:h2:file:~/$()H2_DIR' -Dflyway.user=sa -Dflyway.password= flyway:clean
+
+integration-test:
+	mvn -Dtest=*IT --activate-profiles=integration test
