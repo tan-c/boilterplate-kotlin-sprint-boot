@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.www.DigestAuthenticationE
 import org.springframework.security.web.authentication.www.DigestAuthenticationFilter
 
 @Configuration
-@Order(100)
+@Order(1)
 // Default order is 100
 open class AdminSecurityConfiguration : WebSecurityConfigurerAdapter() {
     private val digestAuthFilter: DigestAuthenticationFilter
@@ -36,11 +36,11 @@ open class AdminSecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.headers().disable()
-            .antMatcher("/support/admin/**").addFilter(digestAuthFilter).exceptionHandling()
+            .antMatcher("/api/v1/pets/**").addFilter(digestAuthFilter).exceptionHandling()
             .authenticationEntryPoint(digestEntryPoint)
             .and()
             .authorizeRequests()
-            .antMatchers("/support/admin/**").hasRole("ADMIN")
+            .antMatchers("/api/v1/pets/**").hasRole("ADMIN")
     }
 
     @Throws(Exception::class)
