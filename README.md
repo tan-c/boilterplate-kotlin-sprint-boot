@@ -4,7 +4,11 @@ This is a boilerpalte code for Kotlin + Spring Boot + Gradle for a basic API ser
 Features including
 - Spring CRUD with base controller
 - Sample unit/integration/api tests
+- Spring Security
 - detekt integration
+
+## Spring Security
+
 
 ## DB Migration
 
