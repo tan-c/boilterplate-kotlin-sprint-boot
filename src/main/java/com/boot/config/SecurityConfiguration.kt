@@ -4,16 +4,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 
 @Configuration
-@Order(2) // So that it will be after the AdminSecurityConfiguration
+@Order(1) // So that it will be after the AdminSecurityConfiguration
 open class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity){
         http
-            .authorizeRequests()
-            .antMatchers(*AUTH_WHITELIST).permitAll() // FIXME: this whitelist does not work, still showing basicLogin
+            .authorizeRequests() // Put this at beginning will match all, see https://stackoverflow.com/questions/33603156/spring-security-multiple-http-config-not-working/33608459#33608459
+//            .antMatchers(*AUTH_WHITELIST).permitAll() // FIXME: this whitelist does not work, still showing basicLogin
 //            .antMatchers("/**/*").denyAll()
             .anyRequest().authenticated().and().httpBasic()
-            .and().logout()
+//            .and().logout()
     }
 
     companion object {
