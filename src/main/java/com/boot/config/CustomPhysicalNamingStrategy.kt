@@ -7,7 +7,7 @@ import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment
 
 class CustomPhysicalNamingStrategy : PhysicalNamingStrategyStandardImpl() {
     override fun toPhysicalColumnName(name: Identifier?, jdbcEnvironment: JdbcEnvironment?): Identifier? {
-        return convertCamelToUnderScoreName(name)
+        return getSafeName(name)
     }
 
     override fun toPhysicalTableName(name: Identifier?, jdbcEnvironment: JdbcEnvironment?): Identifier? {
@@ -30,16 +30,17 @@ class CustomPhysicalNamingStrategy : PhysicalNamingStrategyStandardImpl() {
         return identifier?.let { Identifier.toIdentifier("[${it.text.removeSurrounding("[", "]")}]") }
     }
 
-    private fun convertCamelToUnderScoreName(identifier: Identifier?): Identifier? {
-        return identifier?.let {
-            Identifier.toIdentifier(
-                CaseFormat.UPPER_CAMEL.to(
-                    CaseFormat.LOWER_UNDERSCORE,
-                    it.text
-                )
-            )
-        }
-    }
+//    private fun toLowerCase(identifier: Identifier?): Identifier? {
+//        return identifier?.let {
+//            Identifier.toIdentifier(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, it.text))
+//        }
+//    }
+//
+//    private fun convertCamelToUnderScoreName(identifier: Identifier?): Identifier? {
+//        return identifier?.let {
+//            Identifier.toIdentifier(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, it.text))
+//        }
+//    }
 
     //    private fun convertToSnakeCase(identifier: Identifier): Identifier {
     //        val regex = "([a-z])([A-Z])"

@@ -25,6 +25,7 @@ spring:
                 # So that hibername will use the case as specified e.g. @Table(name = "pet", schema = "PUBLIC") is looking for
                 # Table with name "pet" instead of "PET"
                 physical-strategy: com.boot.config.CustomPhysicalNamingStrategy
+        properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
 
 flyway:
     baseline-on-migrate: true
