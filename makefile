@@ -15,7 +15,6 @@ info:
 	# mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:info
 
 migrate:
-	gradle flywayValidate -i
 	gradle flywayMigrate -i
 	# mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:migrate
 

@@ -1,12 +1,11 @@
 CREATE TABLE "shipwreck"(
-	ID INT AUTO_INCREMENT,
-	NAME VARCHAR(255),
-	DESCRIPTION VARCHAR(2000),
-	CONDITION VARCHAR(255),
-	DEPTH INT,
-	LATITUDE DOUBLE,
-	LONGITUDE DOUBLE,
-	YEAR_DISCOVERED INT
+    name VARCHAR(255),
+    description VARCHAR(2000),
+    condition VARCHAR(255),
+    depth INT,
+    latitude DOUBLE,
+    longitude DOUBLE,
+    year_discovered INT
 );
 
 -- CREATE TABLE LOCATION(
