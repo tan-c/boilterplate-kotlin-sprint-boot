@@ -8,15 +8,23 @@ H2_DIR ?= 'localhost'
 ktlint:
 	ktlint --apply-to-idea-project
 
+# Details in here
+# https://flywaydb.org/documentation/gradle/
 info:
-	gradle flywayMigrate -i
+	gradle flywayInfo -i
 	# mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:info
 
 migrate:
-	mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:migrate
+	gradle flywayValidate -i
+	gradle flywayMigrate -i
+	# mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:migrate
 
 clean:
-	mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:clean
+	gradle flywayClean -i
+	# mvn -Dflyway.url='jdbc:h2:file:~/$(H2_DIR)' -Dflyway.user=sa -Dflyway.password= flyway:clean
+
+repair:
+	gradle flywayRepair -i
 
 integration-test:
 	mvn -Dtest=*IT --activate-profiles=integration test
