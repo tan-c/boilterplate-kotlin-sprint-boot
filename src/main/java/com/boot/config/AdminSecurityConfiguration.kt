@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint
 import org.springframework.security.web.authentication.www.DigestAuthenticationFilter
+import springfox.documentation.swagger.readers.operation.ResponseHeaders.headers
 
 @Configuration
 //@Order(10)
@@ -39,7 +40,9 @@ open class AdminSecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
-        http.headers().disable()
+        http
+            .csrf().disable()
+            .headers().disable()
             .antMatcher("/api/v1/admin/**").addFilter(digestAuthFilter).exceptionHandling()
             .authenticationEntryPoint(digestEntryPoint)
 //            .and()
