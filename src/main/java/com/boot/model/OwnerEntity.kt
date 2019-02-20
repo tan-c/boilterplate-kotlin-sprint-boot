@@ -10,7 +10,7 @@ import javax.persistence.OneToOne
 import javax.persistence.Table
 
 @Entity
-@Table(name = "OWNER", schema = "PUBLIC")
+@Table(name = "owner", schema = "PUBLIC")
 @DynamicUpdate
 data class OwnerEntity (
     var name: String = "",
@@ -19,8 +19,7 @@ data class OwnerEntity (
 
     @OneToMany(
         mappedBy = "owner",
-        fetch = FetchType.LAZY,
-        cascade = [CascadeType.PERSIST, CascadeType.REMOVE]
+        fetch = FetchType.LAZY
     )
     val pets: List<PetEntity>? = null
 ): BaseModel() {

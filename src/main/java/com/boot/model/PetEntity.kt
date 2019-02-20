@@ -2,24 +2,22 @@ package com.boot.model
 
 import com.boot.service.BaseRepository
 import org.hibernate.annotations.DynamicUpdate
-import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
-import javax.persistence.OneToOne
 import javax.persistence.Table
 
 @Entity
-@Table(name = "PET", schema = "PUBLIC")
+@Table(name = "pet", schema = "public")
 @DynamicUpdate
 data class PetEntity (
     var name: String = "",
     var gender: String = "",
 
     @ManyToOne(
-        fetch = FetchType.LAZY,
-        cascade = [CascadeType.PERSIST]
+        fetch = FetchType.LAZY
+//        cascade = [CascadeType.PERSIST]
     )
     @JoinColumn(name = "owner_id")
     var owner: OwnerEntity? = null
@@ -61,3 +59,4 @@ data class PetPutRequestModel(
     val gender: String,
     val owner_id: Long?
 ) : BaseRequestModel()
+

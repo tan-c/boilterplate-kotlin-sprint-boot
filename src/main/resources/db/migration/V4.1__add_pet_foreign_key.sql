@@ -1,4 +1,4 @@
 ALTER TABLE "pet"
 ADD CONSTRAINT "fk_owner"
 FOREIGN KEY ("owner_id")
-REFERENCES "owner" ("id") ON UPDATE CASCADE
+REFERENCES "owner" ("id") ON DELETE CASCADE
