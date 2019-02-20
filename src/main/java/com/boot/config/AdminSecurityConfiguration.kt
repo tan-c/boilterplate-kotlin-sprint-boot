@@ -1,8 +1,9 @@
 package com.boot.config
 
+import com.boot.service.MyUserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.annotation.Order
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
@@ -16,11 +17,16 @@ import org.springframework.security.web.authentication.www.DigestAuthenticationF
 //@Order(10)
 // Default order is 100
 open class AdminSecurityConfiguration : WebSecurityConfigurerAdapter() {
+    @Bean
+    override fun userDetailsService(): MyUserDetailsService {
+        return MyUserDetailsService()
+    }
+
     private val digestAuthFilter: DigestAuthenticationFilter
         @Throws(Exception::class)
         get() {
             val digestFilter = DigestAuthenticationFilter()
-            digestFilter.userDetailsService = userDetailsServiceBean()
+            digestFilter.userDetailsService = userDetailsService() // userDetailsServiceBean()
             digestFilter.setAuthenticationEntryPoint(digestEntryPoint)
             return digestFilter
         }
@@ -39,7 +45,7 @@ open class AdminSecurityConfiguration : WebSecurityConfigurerAdapter() {
             .antMatcher("/api/v1/pets/**").addFilter(digestAuthFilter).exceptionHandling()
             .authenticationEntryPoint(digestEntryPoint)
 //            .and()
-////            .authorizeRequests()
+//            .authorizeRequests()
 //            .antMatchers("/api/v1/pets/**").hasRole("ADMIN")
     }
 
@@ -51,11 +57,13 @@ open class AdminSecurityConfiguration : WebSecurityConfigurerAdapter() {
             .withUser("admin").password("password1").roles("ADMIN")
     }
 
-    @Bean
-    @Throws(Exception::class)
-    override fun userDetailsServiceBean(): UserDetailsService {
-        return super.userDetailsServiceBean()
-    }
+//    @Bean
+//    open fun authenticationProvider(): DaoAuthenticationProvider {
+//        val provider = DaoAuthenticationProvider()
+//        provider.setPasswordEncoder(passwordEncoder())
+//        provider.setUserDetailsService(userDetailsService())
+//        return provider
+//    }
 
     @Bean
     open fun passwordEncoder(): PasswordEncoder {
