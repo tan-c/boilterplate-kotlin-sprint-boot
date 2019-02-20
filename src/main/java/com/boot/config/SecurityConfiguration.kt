@@ -12,7 +12,7 @@ open class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity){
         http
             .authorizeRequests() // Put this at beginning will match all, see https://stackoverflow.com/questions/33603156/spring-security-multiple-http-config-not-working/33608459#33608459
-//            .antMatchers(*AUTH_WHITELIST).permitAll() // FIXME: this whitelist does not work, still showing basicLogin
+            .antMatchers(*AUTH_WHITELIST).permitAll()
 //            .antMatchers("/**/*").denyAll()
             .anyRequest().authenticated().and().httpBasic()
 //            .and().logout()
@@ -21,7 +21,7 @@ open class SecurityConfiguration : WebSecurityConfigurerAdapter() {
     companion object {
         private val AUTH_WHITELIST = arrayOf(
             // -- swagger ui
-            "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**"
+            "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**", "/api/v1/**"
         )
     }
 }
