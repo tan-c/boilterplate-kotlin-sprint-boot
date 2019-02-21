@@ -47,6 +47,6 @@ tasks.withType(JavaCompile) {
 }
 
 flyway {
-    url = 'jdbc:h2:file:~/localhost'
+    url = 'jdbc:h2:file:~/localhost;DATABASE_TO_UPPER=FALSE'
     user = 'sa'
 }
