@@ -10,13 +10,13 @@ plugins {
 
 repositories {
     mavenLocal()
-    maven {
-        url = 'http://repo1.maven.org/maven2/'
-    }
+    maven { url = 'http://repo1.maven.org/maven2/' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/' }
     jcenter()
 }
 
 dependencies {
+    compile 'org.gnieh:logback-journal:0.3.0'
     compile 'org.springframework.boot:spring-boot-starter-logging:2.1.0.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-web:2.1.0.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-security:2.1.0.RELEASE'
@@ -25,7 +25,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-devtools:2.1.0.RELEASE'
     compile 'org.jetbrains.kotlin:kotlin-reflect:1.2.70'
     compile "org.jetbrains.kotlin:kotlin-noarg:1.2.70"
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.2.1'
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+"
+//    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'
     compile 'com.h2database:h2:1.4.197'
     compile 'org.bytedeco:javacv:1.1'
     compile 'com.madgag:animated-gif-lib:1.2'

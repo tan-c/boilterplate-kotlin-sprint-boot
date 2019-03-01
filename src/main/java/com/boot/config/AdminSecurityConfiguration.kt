@@ -3,6 +3,7 @@ package com.boot.config
 import com.boot.service.MyUserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.annotation.Order
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
@@ -14,6 +15,7 @@ import springfox.documentation.swagger.readers.operation.ResponseHeaders.headers
 
 @Configuration
 //@Order(10)
+@Order(100)
 // Default order is 100
 open class AdminSecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Bean
@@ -43,11 +45,11 @@ open class AdminSecurityConfiguration : WebSecurityConfigurerAdapter() {
         http
             .csrf().disable()
             .headers().disable()
-            .antMatcher("/api/v1/admin/**").addFilter(digestAuthFilter).exceptionHandling()
+            .antMatcher("/api/v1/users/**").addFilter(digestAuthFilter).exceptionHandling()
             .authenticationEntryPoint(digestEntryPoint)
-//            .and()
-//            .authorizeRequests()
-//            .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
+            .and()
+            .authorizeRequests()
+            .antMatchers("/api/v1/users/**").hasRole("ADMIN")
     }
 
     @Throws(Exception::class)

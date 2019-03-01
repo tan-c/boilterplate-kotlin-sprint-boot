@@ -1,0 +1,33 @@
+<configuration>
+    <springProfile name="default | local | test | integration">
+        <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>[%highlight(%-5level)] %logger{15} - %message%n%xException{10}</pattern>
+            </encoder>
+        </appender>
+
+        <appender name="asyncjournal" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="stdout"/>
+        </appender>
+
+        <root level="info">
+            <appender-ref ref="asyncjournal" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <appender name="journal" class="org.gnieh.logback.SystemdJournalAppender">
+            <encoder>
+                <pattern>[%highlight(%-5level)] %logger{15} - %message%n%xException{10}</pattern>
+            </encoder>
+        </appender>
+
+        <appender name="asyncjournal" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="journal"/>
+        </appender>
+
+        <root level="warn">
+            <appender-ref ref="asyncjournal" />
+        </root>
+    </springProfile>
+</configuration>
