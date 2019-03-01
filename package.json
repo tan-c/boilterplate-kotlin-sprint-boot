@@ -1,0 +1,24 @@
+{
+  "name": "boilerplate-kotlin-spring-boot",
+  "version": "0.0.0-development",
+  "description": "This is a boilerpalte code for Kotlin + Spring Boot + Gradle for a basic API server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tan-c/boilterplate-kotlin-sprint-boot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tan-c/boilterplate-kotlin-sprint-boot/issues"
+  },
+  "homepage": "https://github.com/tan-c/boilterplate-kotlin-sprint-boot#readme",
+  "devDependencies": {
+    "commitizen": "^3.0.7",
+    "semantic-release": "^15.13.3"
+  }
+}
