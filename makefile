@@ -4,6 +4,11 @@ default:  flywaydb
 # H2_DIR=integration make:migrate
 H2_DIR ?= 'localhost'
 
+# - - - - - - - FOR GIT - - - - - - -
+release:
+	npx semantic-release
+
+# - - - - - - - FOR DB - - - - - - -
 # Run flyway db migration
 ktlint:
 	ktlint --apply-to-idea-project

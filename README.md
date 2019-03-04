@@ -6,6 +6,7 @@ Features including
 - Sample unit/integration/api tests
 - Spring Security
 - detekt integration
+- semantic-release
 
 ## Spring Security
 
@@ -27,3 +28,6 @@ The current schema is set as baseline with `mvn flyway:baseline`and the schema i
 1. Create a new migration file in resource/db/migration. It has to start with a version number followed bu double underscore. e.g. V1.1_Add_uid_to_banner_table
 2. Run `mvn flyway:info` to verify current state and `mvn flyway:validate` to ensure that validation can work
 3. Run `mvn flyway:migrate` to migrate the DB, or just `make migrate` 
+
+## Release Pipeline
+semantic-release is integrated for release management 
