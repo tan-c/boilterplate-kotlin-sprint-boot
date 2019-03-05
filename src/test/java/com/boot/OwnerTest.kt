@@ -36,7 +36,7 @@ class OwnerTest {
     }
 
     @Nested
-    @DisplayName("When you have saved the user")
+    @DisplayName("When you try to get the record") // Describe the context
     inner class UserSaved {
         @Test
         @DisplayName("You should be able to retrieve the user info given the id")
@@ -53,8 +53,8 @@ class OwnerTest {
         @DisplayName("You should be getting an exception when you try to get an user of an unknown id")
         fun should_throw_exception_with_unsaved_user_id() {
             var recordId = 1L
-            var ownerException = EntityNotFoundException("There is no entity exists with id $recordId !")
-            Mockito.`when`(ownerRepository.findById(recordId)).thenThrow(ownerException)
+//            var ownerException = EntityNotFoundException("There is no entity exists with id $recordId !")
+//            Mockito.`when`(ownerRepository.findById(recordId)).thenThrow(ownerException)
 
             Assertions.assertThrows(EntityNotFoundException::class.java, {
                 ownerService.getRecord(recordId)
