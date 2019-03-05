@@ -15,6 +15,10 @@ repositories {
     jcenter()
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     compile 'org.gnieh:logback-journal:0.3.0'
     compile 'org.springframework.boot:spring-boot-starter-logging:2.1.0.RELEASE'
@@ -35,7 +39,9 @@ dependencies {
     compile 'io.springfox:springfox-swagger2:2.9.2'
     compile 'io.springfox:springfox-swagger-ui:2.9.2'
     testCompile 'org.springframework.boot:spring-boot-starter-test:2.1.0.RELEASE'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     testImplementation 'org.mockito:mockito-core:2.21.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
 }
 
 group = 'com.boilterplate'
