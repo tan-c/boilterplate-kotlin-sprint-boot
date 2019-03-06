@@ -1,4 +1,4 @@
-package com.service;
+package com.helper;
 
 import com.madgag.gif.fmsware.AnimatedGifEncoder;
 import org.bytedeco.javacv.FFmpegFrameGrabber;

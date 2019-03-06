@@ -1,4 +1,4 @@
-package com.model
+package com.helper.base
 
 import java.io.Serializable
 import javax.persistence.GeneratedValue

@@ -1,7 +1,5 @@
-package com.controller
+package com.helper.base
 
-import com.model.BaseRequestModel
-import com.model.BaseResponseModel
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 

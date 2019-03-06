@@ -1,4 +1,4 @@
-package com.controller
+package com
 
 import com.weather.WeatherClient
 import io.swagger.annotations.Api

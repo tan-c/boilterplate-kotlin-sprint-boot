@@ -54,4 +54,4 @@ logging:
 
 weather:
     url: https://api.darksky.net/forecast
-    api_secret: 791954ecd38770b72ceb81f759714b73 # ${WEATHER_API_KEY}
+    api_secret: ${WEATHER_API_KEY}

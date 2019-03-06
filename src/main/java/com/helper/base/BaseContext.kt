@@ -1,6 +1,5 @@
-package com.service
+package com.helper.base
 
-import com.model.BaseModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
 import javax.persistence.EntityManager

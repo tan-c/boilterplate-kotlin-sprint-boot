@@ -1,11 +1,7 @@
-package com.service
+package com.owner
 
-import com.model.BaseModel
-import com.model.OwnerEntity
-import com.model.OwnerPostRequestModel
-import com.model.OwnerPutRequestModel
-import com.model.OwnerResponseModel
-import com.model.OwnerRepository
+import com.helper.base.BaseService
+import com.helper.base.BaseModel
 import org.springframework.stereotype.Service
 
 @Service

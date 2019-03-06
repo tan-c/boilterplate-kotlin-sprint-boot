@@ -1,5 +1,6 @@
-package com
+package com.pet
 
+import com.App
 import java.io.IOException
 
 import org.junit.Test

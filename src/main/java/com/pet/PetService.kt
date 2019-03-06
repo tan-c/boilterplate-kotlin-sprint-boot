@@ -1,11 +1,7 @@
-package com.service
+package com.pet
 
-import com.model.BaseModel
-import com.model.PetEntity
-import com.model.PetPostRequestModel
-import com.model.PetPutRequestModel
-import com.model.PetResponseModel
-import com.model.PetRepository
+import com.helper.base.BaseModel
+import com.helper.base.BaseService
 import org.springframework.stereotype.Service
 
 @Service

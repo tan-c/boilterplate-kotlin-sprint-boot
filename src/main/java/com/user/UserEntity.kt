@@ -1,6 +1,10 @@
-package com.model
+package com.user
 
-import com.service.BaseRepository
+import com.helper.base.BaseDataResponseModel
+import com.helper.base.BaseModel
+import com.helper.base.BaseRepository
+import com.helper.base.BaseRequestModel
+import com.helper.base.loadBase
 import org.hibernate.annotations.DynamicUpdate
 import javax.persistence.Entity
 import javax.persistence.Table

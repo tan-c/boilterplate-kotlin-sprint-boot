@@ -1,8 +1,6 @@
-package com
+package com.pet
 
 import com.App
-import com.model.PetEntity
-import com.model.PetRepository
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest

@@ -1,12 +1,15 @@
-package com.controller
+package com.owner
 
-import com.model.BaseDataResponseModel
-import com.model.BaseListResponseModel
-import com.model.BaseResponseModel
-import com.model.OwnerPostRequestModel
-import com.model.OwnerPutRequestModel
-import com.model.OwnerResponseModel
-import com.service.OwnerService
+import com.helper.base.ApiRequest
+import com.helper.base.ApiResponse
+import com.helper.base.BaseController
+import com.helper.base.BaseDataResponseModel
+import com.helper.base.BaseListResponseModel
+import com.helper.base.BaseResponseModel
+import com.owner.OwnerPostRequestModel
+import com.owner.OwnerPutRequestModel
+import com.owner.OwnerResponseModel
+import com.owner.OwnerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

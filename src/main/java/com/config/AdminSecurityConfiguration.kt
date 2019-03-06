@@ -1,6 +1,6 @@
 package com.config
 
-import com.service.MyUserDetailsService
+import com.user.MyUserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.annotation.Order

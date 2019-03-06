@@ -1,11 +1,7 @@
-package com.service
+package com.user
 
-import com.model.BaseModel
-import com.model.UserEntity
-import com.model.UserPostRequestModel
-import com.model.UserPutRequestModel
-import com.model.UserResponseModel
-import com.model.UserRepository
+import com.helper.base.BaseService
+import com.helper.base.BaseModel
 import org.springframework.stereotype.Service
 
 @Service

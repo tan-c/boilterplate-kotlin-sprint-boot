@@ -1,8 +1,5 @@
-package com
+package com.owner
 
-import com.model.OwnerEntity
-import com.model.OwnerRepository
-import com.service.OwnerService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName

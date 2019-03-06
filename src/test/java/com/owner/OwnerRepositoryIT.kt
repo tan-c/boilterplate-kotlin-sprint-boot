@@ -1,8 +1,6 @@
-package com
+package com.owner
 
 import com.App
-import com.model.OwnerEntity
-import com.model.OwnerRepository
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired

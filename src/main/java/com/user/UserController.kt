@@ -1,12 +1,15 @@
-package com.controller
+package com.user
 
-import com.model.BaseDataResponseModel
-import com.model.BaseListResponseModel
-import com.model.BaseResponseModel
-import com.model.UserPostRequestModel
-import com.model.UserPutRequestModel
-import com.model.UserResponseModel
-import com.service.UserService
+import com.helper.base.ApiRequest
+import com.helper.base.ApiResponse
+import com.helper.base.BaseController
+import com.helper.base.BaseDataResponseModel
+import com.helper.base.BaseListResponseModel
+import com.helper.base.BaseResponseModel
+import com.user.UserPostRequestModel
+import com.user.UserPutRequestModel
+import com.user.UserResponseModel
+import com.user.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

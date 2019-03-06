@@ -1,9 +1,5 @@
-package com.service
+package com.helper.base
 
-import com.model.BaseDataResponseModel
-import com.model.BaseDeletedDataResponseModel
-import com.model.BaseModel
-import com.model.BaseResponseModel
 import org.springframework.stereotype.Service
 import javax.persistence.EntityNotFoundException
 import org.springframework.transaction.annotation.Transactional

@@ -1,9 +1,6 @@
-package com
+package com.pet
 
-import com.model.PetEntity
-import com.model.PetRepository
 import org.mockito.Mock
-import com.service.PetService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName

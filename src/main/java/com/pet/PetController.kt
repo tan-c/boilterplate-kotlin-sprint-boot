@@ -1,12 +1,11 @@
-package com.controller
+package com.pet
 
-import com.model.BaseDataResponseModel
-import com.model.BaseListResponseModel
-import com.model.BaseResponseModel
-import com.model.PetPostRequestModel
-import com.model.PetPutRequestModel
-import com.model.PetResponseModel
-import com.service.PetService
+import com.helper.base.ApiRequest
+import com.helper.base.ApiResponse
+import com.helper.base.BaseController
+import com.helper.base.BaseDataResponseModel
+import com.helper.base.BaseListResponseModel
+import com.helper.base.BaseResponseModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

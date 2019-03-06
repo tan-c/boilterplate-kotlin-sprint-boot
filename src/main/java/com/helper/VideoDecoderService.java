@@ -1,4 +1,4 @@
-package com.service;
+package com.helper;
 
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FrameGrabber;
