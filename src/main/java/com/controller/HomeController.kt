@@ -1,6 +1,6 @@
 package com.controller
 
-import com.model.WeatherClient
+import com.weather.WeatherClient
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
