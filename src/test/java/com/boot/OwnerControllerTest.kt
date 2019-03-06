@@ -16,7 +16,7 @@ import java.util.Optional
 import javax.persistence.EntityNotFoundException
 
 @DisplayName("Given there is an owner")
-class OwnerTest {
+class OwnerControllerTest {
     @InjectMocks
     lateinit var ownerService: OwnerService
 

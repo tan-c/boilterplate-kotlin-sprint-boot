@@ -16,7 +16,7 @@ import java.util.Optional
 import javax.persistence.EntityNotFoundException
 
 @DisplayName("Given there is a pet")
-class PetTest {
+class PetServiceTest {
     @InjectMocks
     lateinit var petService: PetService
 
