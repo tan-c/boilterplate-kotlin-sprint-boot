@@ -19,19 +19,18 @@ class OwnerRepositoryIT {
     @Autowired
     lateinit var ownerRepository: OwnerRepository
 
-    private var ownerEntity = OwnerEntity(
-        name = "new owner",
-        gender = "male"
-    )
-
     @After
     @Throws(Exception::class)
     fun tearDown() {
-        ownerRepository.deleteById(ownerEntity.id)
+        ownerRepository.deleteAll()
     }
 
     @Test
     fun testCreatingOwnerRecord() {
+        var ownerEntity = OwnerEntity(
+            name = "new owner",
+            gender = "male"
+        )
         ownerRepository.save(ownerEntity)
         val maybeNewlyCreatedOwner = ownerRepository.findById(ownerEntity.id)
         assertThat(maybeNewlyCreatedOwner!!.get().id, `is`(Optional.of(ownerEntity).get().id))
