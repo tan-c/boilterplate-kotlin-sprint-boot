@@ -1,0 +1,3 @@
+weather:
+    url: http://localhost:8089
+    api_secret: some-test-api-key
